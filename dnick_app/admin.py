@@ -18,13 +18,13 @@ class AirlineAdmin(admin.ModelAdmin):
     inlines = [AirlinePilotInline]
 
 class FlightAdmin(admin.ModelAdmin):
-    exclude = ["created_by"]
-
+    exclude = ["created_by",]
     def has_change_permission(self, request, obj=None):
-        if obj is obj.created_by and request.user:
-            return True
-        else:
-            return False
+        if obj is not None:
+            if obj.created_by == request.user:
+                return True
+            else:
+                return False
 
     def has_delete_permission(self, request, obj=None):
         return False
@@ -33,8 +33,9 @@ class FlightAdmin(admin.ModelAdmin):
         obj.created_by = request.user
         return super(FlightAdmin, self).save_model(request, obj, form, change)
 
+
 admin.site.register(Pilot, PilotAdmin)
 admin.site.register(Airline, AirlineAdmin)
 admin.site.register(AirlinePilot)
 admin.site.register(Balloon)
-admin.site.register(Flight)
+admin.site.register(Flight, FlightAdmin)
