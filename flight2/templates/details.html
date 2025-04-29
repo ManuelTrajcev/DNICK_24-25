@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+</head>
+<body>
+<h1>Details for {{ flight.code }}</h1>
+<h2>{{ flight.take_off_airport }}</h2>
+<h2>{{ flight.landing_airport }}</h2>
+<h2>{{ flight.pilot.name|default_if_none:"N/A"}} </h2>
+</body>
+</html>
