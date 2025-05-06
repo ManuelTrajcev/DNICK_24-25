@@ -23,5 +23,8 @@ from flight2 import views as FlightAppViews
 urlpatterns = [
                   path("admin/", admin.site.urls),
                   path("flight/", FlightAppViews.index, name="flight_index"),
+                  path("add-flight/", FlightAppViews.add_flight_view, name="add_flight_view"),
+                  path("contact/", FlightAppViews.contact, name="contact"),
                   path("details/<flight_id>", FlightAppViews.details, name="details"),
+                  path("edit-flight/<flight_id>", FlightAppViews.edit_flight, name="edit_flight"),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

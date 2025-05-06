@@ -2,12 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Details</title>
+    <title>FlightApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 </head>
 <body>
-<h1>Details for {{ flight.code }}</h1>
-<h2>{{ flight.take_off_airport }}</h2>
-<h2>{{ flight.landing_airport }}</h2>
-<h2>{{ flight.pilot.name|default_if_none:"N/A"}} </h2>
+<ul class="nav justify-content-end">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/add-flight">Add Flight</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/edit-flight/">Contact</a>
+    </li>
+</ul>
+<div class="container m-5 d-flex flex-column align-items-center">
+    <div class="row">
+        <h1>{{ app_name }}</h1>
+    </div>
+    <div class="row">
+        <h2>{{ flight.code }}</h2>
+    </div>
+    <div class="row">
+        <h3>{{ flight.take_off_airport }} - {{ flight.landing_airport }}</h3>
+    </div>
+    <div class="row col-2">
+        <a href="{% url 'flight_index' %}" class="btn btn-primary">Back</a>
+    </div>
+</div>
 </body>
 </html>
